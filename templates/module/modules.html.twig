@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    {% block head %}
+    <link rel="stylesheet" href="{{ asset('css/modules.css') }}" />
+    {% endblock %}
+<body>
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="/modules">modules</a></li>
+  <li><a href="/ajoutForm">ajouter un module</a></li>
+</ul>
+
+<h1 style="margin-left:40%">Liste des Modules</h1>
+<br/>
+<br/>
+<section class="articles">
+{% for module in modules %}
+<article>
+      <div class="article-wrapper">
+        <figure>
+          <img src="data:image/png;base64,{{ module.image }}" alt="" />
+        </figure>
+        <div class="article-body">
+          <h2>{{module.nom}}</h2>
+          <p>
+          {{module.description}}
+          </p>
+          <a href="/module/{{module.id}}" class="read-more">
+            voir détail du module <span class="sr-only">about this is some title</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+</body>
+</html>
+
+
